@@ -163,8 +163,8 @@ async def get_tool(tool_id: str, ctx: Context = None) -> str:
 
 
 @mcp.tool()
-async def create_tool(name: str, description: str, schema: str = None, func: str = None, color: str = None, ctx: Context = None) -> str:
-    """Create a new custom tool in Flowise."""
+async def create_tool(name: str, description: str, schema: str = None, func: str = None, color: str = "#4CAF50", ctx: Context = None) -> str:
+    """Create a new custom tool in Flowise. Color defaults to green (#4CAF50)."""
     return _j(await _c(ctx).create_tool(name, description, schema, func, color))
 
 

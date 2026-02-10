@@ -263,15 +263,13 @@ class FlowiseClient:
         description: str,
         schema: str | None = None,
         func: str | None = None,
-        color: str | None = None,
+        color: str = "#4CAF50",
     ) -> Any:
-        payload: dict[str, Any] = {"name": name, "description": description}
+        payload: dict[str, Any] = {"name": name, "description": description, "color": color}
         if schema:
             payload["schema"] = schema
         if func:
             payload["func"] = func
-        if color:
-            payload["color"] = color
         return await self._post("/tools", payload)
 
     async def update_tool(
