@@ -12,11 +12,13 @@ MCP server for **Cursor IDE <-> Flowise** integration. Provides 50 tools coverin
 ## Installation
 
 ```bash
-# From source (editable)
-pip install -e /usr/src/cursorwise
+# Via uvx (recommended for Cursor MCP)
+uvx --from git+https://github.com/jon-ribera/cursorwise.git cursorwise
 
-# Or via uvx from a git repo
-uvx --from git+https://github.com/youruser/cursorwise cursorwise
+# Or from source (editable, for development)
+git clone https://github.com/jon-ribera/cursorwise.git
+cd cursorwise
+pip install -e .
 ```
 
 ## Configuration
@@ -39,7 +41,7 @@ Add to `.cursor/mcp.json` in your workspace:
   "mcpServers": {
     "cursorwise": {
       "command": "uvx",
-      "args": ["--from", "/usr/src/cursorwise", "cursorwise"],
+      "args": ["--from", "git+https://github.com/jon-ribera/cursorwise.git", "cursorwise"],
       "env": {
         "FLOWISE_API_KEY": "your-api-key",
         "FLOWISE_API_ENDPOINT": "http://localhost:3000",
@@ -53,6 +55,8 @@ Add to `.cursor/mcp.json` in your workspace:
   }
 }
 ```
+
+> **Note:** If you're behind a corporate proxy and connecting to a local Flowise instance, set the proxy env vars to empty strings as shown above to bypass the proxy for local calls.
 
 ## Tool List (50)
 

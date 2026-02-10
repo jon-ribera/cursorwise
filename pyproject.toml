@@ -9,6 +9,8 @@ description = "MCP server for Cursor IDE <-> Flowise integration. 50 tools cover
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
+authors = [{name = "Jon Ribera", email = "riberajon@gmail.com"}]
+keywords = ["mcp", "flowise", "cursor", "ai", "chatflow"]
 dependencies = [
     "mcp[cli]>=1.2.0",
     "httpx>=0.27.0",
