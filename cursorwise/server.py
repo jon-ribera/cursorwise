@@ -91,8 +91,8 @@ async def get_chatflow_by_apikey(apikey: str, ctx: Context = None) -> str:
 
 
 @mcp.tool()
-async def create_chatflow(name: str, flow_data: str = "{}", description: str = "", chatflow_type: str = "CHATFLOW", ctx: Context = None) -> str:
-    """Create a new chatflow. flow_data is a JSON string."""
+async def create_chatflow(name: str, flow_data: str = '{"nodes":[],"edges":[]}', description: str = "", chatflow_type: str = "CHATFLOW", ctx: Context = None) -> str:
+    """Create a new chatflow. flow_data is a JSON string with nodes and edges arrays."""
     return _j(await _c(ctx).create_chatflow(name, flow_data, description, chatflow_type))
 
 

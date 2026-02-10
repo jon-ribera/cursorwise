@@ -220,18 +220,17 @@ class FlowiseClient:
         instructions: str = "",
         credential: str | None = None,
     ) -> Any:
-        payload: dict[str, Any] = {
-            "details": {
-                "name": name,
-                "description": description,
-                "model": model,
-                "instructions": instructions,
-                "temperature": 0.7,
-                "top_p": 1.0,
-                "tools": [],
-                "tool_resources": {},
-            }
-        }
+        details = json.dumps({
+            "name": name,
+            "description": description,
+            "model": model,
+            "instructions": instructions,
+            "temperature": 0.7,
+            "top_p": 1.0,
+            "tools": [],
+            "tool_resources": {},
+        })
+        payload: dict[str, Any] = {"details": details}
         if credential:
             payload["credential"] = credential
         return await self._post("/assistants", payload)
@@ -239,7 +238,9 @@ class FlowiseClient:
     async def update_assistant(self, assistant_id: str, details: str | None = None, credential: str | None = None) -> Any:
         payload: dict[str, Any] = {}
         if details:
-            payload["details"] = self._parse_json_str(details)
+            # Flowise expects details as a JSON string, not an object
+            parsed = self._parse_json_str(details)
+            payload["details"] = json.dumps(parsed) if isinstance(parsed, dict) else details
         if credential:
             payload["credential"] = credential
         return await self._put(f"/assistants/{assistant_id}", payload)
