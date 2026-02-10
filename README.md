@@ -133,6 +133,7 @@ Set via environment variables or a `.env` file:
 
 | Document | Description |
 |---|---|
+| 🏗️ [Builder Orchestrator Guide](FLOWISE_BUILDER_ORCHESTRATOR_CHATFLOW_MCP.md) | Agent skill for building chatflows — node wiring, credential binding, recipes, error lookup (v6.0) |
 | 📘 [Node Schema Reference](FLOWISE_NODE_REFERENCE.md) | Complete schema for all 303 Flowise nodes — inputs, credentials, base classes |
 | 📋 [API Tool Audit Report](API_TOOL_AUDIT_REPORT.md) | End-to-end test results for all 50 tools with bug fixes |
 | 📄 [.env.example](.env.example) | Environment variable template |
